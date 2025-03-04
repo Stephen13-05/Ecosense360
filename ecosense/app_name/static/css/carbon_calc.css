@@ -1,0 +1,224 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f9f4;
+    line-height: 1.6; /* Improved readability */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    padding: 15px 40px;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Navbar */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login {
+    background: white;
+    color: #2E7D32;
+}
+
+.signup {
+    background: linear-gradient(90deg, #ffcc00, #FFA726);
+    color: white;
+}
+
+.auth-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    background-color: #E0F2E9;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Wrapper */
+.content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+/* Image Styling */
+.content img {
+    width: 50%; /* Increased size */
+    max-width: 600px; /* Ensures it does not get too large */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover; /* Ensures the image fits well */
+}
+
+/* Text Section */
+.text {
+    width: 55%;
+}
+
+/* Heading */
+.text h1 {
+    color: #228b22;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+.text p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Button */
+.green-btn {
+    display: inline-block;
+    background-color: #228b22;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.green-btn:hover {
+    background-color: #1b6b1b;
+}
+
+/* Calculate Section */
+.calculate-section {
+    text-align: center; /* Center the button horizontally */
+    margin-top: 20px; /* Add some space at the top */
+}
+
+.calculate-btn {
+    display: inline-block; /* Make the button width fit the text content */
+    background-color: #228b22;
+    color: white;
+    padding: 5px 15px; /* Adjust padding for a smaller button */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px; /* Adjust font size for smaller button */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        padding: 30px; /* Reduce padding for smaller screens */
+        flex-direction: column; /* Stack the image and content vertically */
+    }
+
+    .hero img {
+        width: 80%; /* Image takes more width on smaller screens */
+        margin-bottom: 20px; /* Add space below the image */
+    }
+
+    .hero-content {
+        width: 100%; /* Take full width on smaller screens */
+        text-align: center; /* Center text on smaller screens */
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .hero h1 {
+        font-size: 28px; /* Smaller font size for heading */
+    }
+
+    .hero p {
+        font-size: 16px; /* Smaller font size for paragraph */
+    }
+
+    .green-btn {
+        padding: 8px 15px; /* Adjust button padding */
+        font-size: 16px; /* Smaller font size for button */
+    }
+
+    .calculate-btn {
+        font-size: 12px; /* Smaller font size for button */
+        padding: 4px 10px; /* Reduce button padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 20px; /* Further reduce padding for very small screens */
+    }
+
+    .hero img {
+        width: 90%; /* Further reduce image size */
+    }
+
+    .hero h1 {
+        font-size: 24px; /* Even smaller heading font size */
+    }
+
+    .hero p {
+        font-size: 14px; /* Smaller paragraph font size */
+    }
+
+    .green-btn {
+        padding: 7px 14px; /* Adjust button padding */
+        font-size: 14px; /* Smaller button font size */
+    }
+
+    .calculate-btn {
+        font-size: 10px; /* Even smaller font size for the button */
+        padding: 3px 8px; /* Reduce button padding even more */
+    }
+}

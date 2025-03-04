@@ -1,0 +1,251 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f9f4;
+    line-height: 1.6; /* Improved readability */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    padding: 15px 40px;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Navbar */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login {
+    background: white;
+    color: #2E7D32;
+}
+
+.signup {
+    background: linear-gradient(90deg, #ffcc00, #FFA726);
+    color: white;
+}
+
+.auth-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h2 {
+    font-size: 36px;
+    color: #2d6627;
+    margin-bottom: 10px;
+}
+
+.hero-text h3 {
+    font-size: 20px;
+    color: #6dbb67;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 16px;
+    margin-bottom: 20px; /* Spacing for better readability */
+}
+
+.read-more {
+    background: linear-gradient(90deg, #2E7D32, #66BB6A);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.read-more:hover {
+    opacity: 0.9;
+}
+
+/* Hero Image */
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* CTA Section */
+.cta {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(90deg, #2d6627, #1B5E20);
+    color: white;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, #ffcc00, #FFA726);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    opacity: 0.8;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 50px;
+}
+
+.feature-boxes {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature h3 {
+    color: #2d6627;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        max-width: 100%;
+    }
+    .hero-image img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+    }
+
+    .feature-boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-text h3 {
+        font-size: 18px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .read-more {
+        font-size: 14px;
+    }
+
+    .feature {
+        width: 90%;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

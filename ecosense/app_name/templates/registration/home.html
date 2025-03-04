@@ -1,0 +1,89 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html="{{LANGUAGE_CODE}}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSense360 - Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=2">
+</head>
+<body>
+    <!-- Language Selection Form -->
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()">
+            <option value="en" {% if request.session.django_language == "en" %}selected{% endif %}>English</option>
+            <option value="ta" {% if request.session.django_language == "ta" %}selected{% endif %}>தமிழ் (Tamil)</option>
+            <option value="te" {% if request.session.django_language == "te" %}selected{% endif %}>తెలుగు (Telugu)</option>
+        </select>
+    </form>
+    
+    
+    <h1>{% trans "EcoSense360" %}</h1>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/eco_logo.jpg' %}" alt="{% trans 'Ecosense360 Logo' %}">
+            <h1>{% trans "Ecosense360" %}</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">{% trans Home %}</a></li>
+                <li><a href="#">{% trans Dashboard %}</a></li>
+                <li><a href="{% url 'carbon_calculator' %}" target="_blank" rel="noopener noreferrer">{ % Carbon Footprint Calculator %}</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login"onclick="location.href='http://127.0.0.1:8000/login/'">Login</button>
+            <button class="signup" onclick="location.href='http://127.0.0.1:8000/signup/'">Sign Up</button>
+    
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Ecosense360</h2>
+            <h3>Your Smart Carbon Footprint Companion</h3>
+            <p>Take control of your environmental impact with Ecosense360. Our AI-powered platform helps you track, analyze, and reduce your carbon footprint effortlessly.With real-time insights, personalized action plans, and predictive goal setting, we make sustainable living easier and smarter. Join us in building a greener future, one step at a time!</p>
+            <button class="read-more">Read More</button>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images/homepart.jpg' %}" alt="Eco-friendly city">
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Getting started</h2>
+        <button class="cta-button" onclick="location.href='http://127.0.0.1:8000/signup/'">Sign Up</button>
+    </section>
+
+    <section class="features">
+        <h2>Features</h2>
+        <div class="feature-boxes">
+            <div class="feature">
+                <h3>AI & Smart Recommendations</h3>
+                <p>Leverage AI-powered insights to set and achieve realistic sustainability goals based on your current footprint trends.</p>
+                <a href="#">Try now</a>
+            </div>
+            <div class="feature">
+                <h3>Carbon Footprint Calculator</h3>
+                <p>Accurately measure your carbon footprint based on daily activities and consumption patterns. Get instant insights into your environmental impact.</p>
+                <a href="{% url 'carbon_calculator' %}" target="_blank" rel="noopener noreferrer">Try now</a>
+            </div>
+            <div class="feature">
+                <h3>Carbon Emission Analysis & Reporting</h3>
+                <p>Break down your emissions into key categories, helping you understand which activities contribute the most to your carbon footprint.</p>
+                <a href="#">Try now</a>
+            </div>
+            <div class="feature">
+                <h3>Data Visualizations</h3>
+                <p>Get a clear overview of your carbon footprint with interactive pie charts and graphical representations for easy understanding.</p>
+                <a href="#">Try now</a>
+            </div>
+        </div>
+    </section>
+    {% include "registration/footer.html" %}
+   
+</body>
+</html>

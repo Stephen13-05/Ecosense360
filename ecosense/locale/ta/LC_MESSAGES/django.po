@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ta\n"
+
+msgid "EcoSense360"
+msgstr "ஈகோசென்ஸ்360"
+
+msgid "Ecosense360 Logo"
+msgstr "ஈகோசென்ஸ்360 லோகோ"
+
+msgid "Home"
+msgstr "முகப்பு"
+
+msgid "Dashboard"
+msgstr "டாஷ்போர்டு"
+
+msgid "Carbon Footprint Calculator"
+msgstr "கார்பன் கால்பத விளக்கக் கணினி"
+
+msgid "About Us"
+msgstr "எங்களை பற்றி"
+
+msgid "Contact Us"
+msgstr "தொடர்பு கொள்ளுங்கள்"
+
+msgid "Login"
+msgstr "உள்நுழைய"
+
+msgid "Sign Up"
+msgstr "பதிவு செய்யவும்"
+
+msgid "Your Smart Carbon Footprint Companion"
+msgstr "உங்கள் ஸ்மார்ட் கார்பன் கால்பத துணை"
+
+msgid "Take control of your environmental impact with Ecosense360. Our AI-powered platform helps you track, analyze, and reduce your carbon footprint effortlessly. With real-time insights, personalized action plans, and predictive goal setting, we make sustainable living easier and smarter. Join us in building a greener future, one step at a time!"
+msgstr "Ecosense360 உடன் உங்கள் சுற்றுச்சூழல் தாக்கத்தைக் கட்டுப்படுத்துங்கள். எங்கள் AI இயக்கும் தளம் உங்கள் கார்பன் கால்பதத்தை கண்காணிக்க, பகுப்பாய்வு செய்ய மற்றும் குறைக்க உதவுகிறது. நேரடி பார்வைகள், தனிப்பயன் செயல்திட்டங்கள் மற்றும் கணிப்பு இலக்கு அமைப்புகளுடன், நாங்கள் நிலையான வாழ்வை எளிதாக்குகிறோம். ஒரு பசுமையான எதிர்காலத்தை உருவாக்க எங்களுடன் சேருங்கள்!"
+
+msgid "Read More"
+msgstr "மேலும் வாசிக்க"
+
+msgid "Getting started"
+msgstr "தொடங்குவது எப்படி"
+
+msgid "AI & Smart Recommendations"
+msgstr "AI & ஸ்மார்ட் பரிந்துரைகள்"
+
+msgid "Leverage AI-powered insights to set and achieve realistic sustainability goals based on your current footprint trends."
+msgstr "உங்கள் தற்போதைய கால்பத அடிப்படையில் நிஜமான நிலைத்தன்மை இலக்குகளை அமைக்க மற்றும் அடைய AI இயக்கும் பார்வைகளைப் பயன்படுத்தவும்."
+
+
+msgid "Accurately measure your carbon footprint based on daily activities and consumption patterns. Get instant insights into your environmental impact."
+msgstr "தினசரி செயல்பாடுகள் மற்றும் பயன்பாட்டு முறைகளின் அடிப்படையில் உங்கள் கார்பன் கால்பதத்தை துல்லியமாக அளவிடுங்கள். உங்கள் சுற்றுச்சூழல் தாக்கத்திற்கான உடனடி பார்வைகளைப் பெறுங்கள்."
+
+msgid "Carbon Emission Analysis & Reporting"
+msgstr "கார்பன் வெளியீட்டு பகுப்பாய்வு & அறிக்கையிடல்"
+
+msgid "Break down your emissions into key categories, helping you understand which activities contribute the most to your carbon footprint."
+msgstr "உங்கள் வெளியீடுகளை முக்கிய வகைகளாக பிரிக்கவும், உங்கள் கார்பன் கால்பதத்துக்கு எந்த செயல்பாடுகள் அதிக பங்களிப்பு செய்கின்றன என்பதைப் புரிந்துகொள்ள உதவுகிறது."
+
+msgid "Data Visualizations"
+msgstr "தரவு காட்சிகள்"
+
+msgid "Get a clear overview of your carbon footprint with interactive pie charts and graphical representations for easy understanding."
+msgstr "உங்கள் கார்பன் கால்பதத்தின் தெளிவான பார்வையை தொடர்புடைய வட்ட கோவைகளும் வரைப்படத்தோற்றங்களும் கொண்டு எளிதாக புரிந்துகொள்ளுங்கள்."

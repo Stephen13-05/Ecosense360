@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="{% static 'css/carbon_calc.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/eco_logo.jpg' %}" alt="Ecosense360 Logo">
+            <h1>Ecosense360</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="{% url 'carbon_calculator' %}" target="_blank" rel="noopener noreferrer">Carbon Footprint Calculator</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login"onclick="location.href='http://127.0.0.1:8000/login/'">Login</button>
+            <button class="signup" onclick="location.href='http://127.0.0.1:8000/signup/'">Sign Up</button>
+    
+        </div>
+    </header>
+    <section class="hero">
+        <div class="content">
+            <img src="{% static 'images/carbon_calc.png' %}" alt="Carbon Footprint Diagram">
+            <div class="text">
+                <h1>Carbon Footprint</h1>
+                <p>A carbon footprint is the total amount of greenhouse gases, primarily carbon dioxide (CO₂), that are emitted directly or indirectly by an individual, organization, event, or product. It is usually measured in metric tons of CO₂ equivalent (CO₂e) over a specific time period.</p>
+                <a href="#" class="green-btn">Start your Green Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculate-section">
+        <a href="https://carbonfootprintcalculator.streamlit.app/." class="calculate-btn">Calculate Carbon Footprint</a>
+    </section>
+
+
+
+    {% include "registration/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EcoSense360</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>EcoSense360</h1>
+        <p class="subtitle">Track. Reduce. Sustain</p>
+        <div class="form-box">
+            <h2>Create Account</h2>
+            <p class="form-subtitle">Create your account to get started</p>
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %} 
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    <span class="icon">👤</span>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password1" name="password1" placeholder="Create a password" required>
+                    <span class="icon">🔒</span>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password2" name="password2" placeholder="Confirm password" required>
+                    <span class="icon">🔒</span>
+                </div>
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree with <a href="#">Terms & Conditions</a></label>
+                </div>
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+        </div>
+    </div>
+</body>
+</html>
