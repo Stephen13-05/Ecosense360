@@ -18,9 +18,6 @@
             <option value="te" {% if request.session.django_language == "te" %}selected{% endif %}>తెలుగు (Telugu)</option>
         </select>
     </form>
-    
-    
-    <h1>{% trans "EcoSense360" %}</h1>
     <header>
         <div class="logo">
             <img src="{% static 'images/eco_logo.jpg' %}" alt="{% trans 'Ecosense360 Logo' %}">
@@ -30,22 +27,22 @@
             <ul>
                 <li><a href="#">{% trans Home %}</a></li>
                 <li><a href="#">{% trans Dashboard %}</a></li>
-                <li><a href="{% url 'carbon_calculator' %}" target="_blank" rel="noopener noreferrer">{ % Carbon Footprint Calculator %}</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'carbon_calculator' %}" target="_blank" rel="noopener noreferrer">{% trans Carbon Footprint Calculator %}</a></li>
+                <li><a href="#">{% trans About Us %}</a></li>
+                <li><a href="#">{% trans Contact Us %}</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <button class="login"onclick="location.href='http://127.0.0.1:8000/login/'">Login</button>
-            <button class="signup" onclick="location.href='http://127.0.0.1:8000/signup/'">Sign Up</button>
+            <button class="login"onclick="location.href='http://127.0.0.1:8000/login/'">{% trans Login %}</button>
+            <button class="signup" onclick="location.href='http://127.0.0.1:8000/signup/'">{% tans Sign Up %}</button>
     
         </div>
     </header>
     <section class="hero">
         <div class="hero-text">
-            <h2>Ecosense360</h2>
-            <h3>Your Smart Carbon Footprint Companion</h3>
-            <p>Take control of your environmental impact with Ecosense360. Our AI-powered platform helps you track, analyze, and reduce your carbon footprint effortlessly.With real-time insights, personalized action plans, and predictive goal setting, we make sustainable living easier and smarter. Join us in building a greener future, one step at a time!</p>
+            <h2>{% trans Ecosense360 %}</h2>
+            <h3>{% trans Your Smart Carbon Footprint Companion %}</h3>
+            <p>{% trans Take control of your environmental impact with Ecosense360. Our AI-powered platform helps you track, analyze, and reduce your carbon footprint effortlessly.With real-time insights, personalized action plans, and predictive goal setting, we make sustainable living easier and smarter. Join us in building a greener future, one step at a time! %}</p>
             <button class="read-more">Read More</button>
         </div>
         <div class="hero-image">
@@ -54,7 +51,7 @@
     </section>
 
     <section class="cta">
-        <h2>Getting started</h2>
+        <h2>{% trans Getting started %}</h2>
         <button class="cta-button" onclick="location.href='http://127.0.0.1:8000/signup/'">Sign Up</button>
     </section>
 
@@ -83,7 +80,6 @@
             </div>
         </div>
     </section>
-    {% include "registration/footer.html" %}
-   
+    {% include "registration/footer.html" %}  
 </body>
 </html>
