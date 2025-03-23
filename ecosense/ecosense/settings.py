@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_name',
     'Carbon',
+    'treat',
 ]
 
 MIDDLEWARE = [
