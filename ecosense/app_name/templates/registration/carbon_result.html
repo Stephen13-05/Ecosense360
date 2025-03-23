@@ -14,8 +14,9 @@
         <h2 class="text-center">Carbon Footprint Results</h2>
         
         <div class="alert alert-success text-center">
-            <strong>Your Estimated Carbon Footprint:</strong> {{ total_footprint|floatformat:2 }} kg CO₂ per month
+            <strong>Your Estimated Carbon Footprint:</strong> {{ latest_footprint|floatformat:2 }} kg CO₂ per month
         </div>
+        
 
         <h3 class="mt-4">Records</h3>
         <table class="table table-bordered">
@@ -28,7 +29,6 @@
                     <th>TV (Hours)</th>
                     <th>Transport (Km)</th>
                     <th>Diet</th>
-                    <th>Waste</th>
                     <th>Total CO₂ (kg)</th>
                 </tr>
             </thead>
@@ -42,14 +42,50 @@
                     <td>{{ record.tv_hours }}</td>
                     <td>{{ record.daily_car_km }} km</td>
                     <td>{{ record.diet_type }}</td>
-                    <td>{{ record.waste_type }}</td>
                     <td>{{ record.total_footprint|floatformat:2 }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <a href="{% url 'carbon_footprint' %}" class="btn btn-primary">Calculate Again</a>
+        <!-- Visualization for each timestamp -->
+        {% for timestamp, charts in timestamp_charts.items %}
+        <div class="mt-5">
+            <h4 class="text-center text-primary">Carbon Footprint Analysis for {{ timestamp }}</h4>
+            
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h5>Travel Usage</h5>
+                    <img src="{{ charts.travel_chart }}" class="img-fluid" alt="Travel Usage Chart">
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5>Electricity Usage</h5>
+                    <img src="{{ charts.electricity_chart }}" class="img-fluid" alt="Electricity Usage Chart">
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+
+        <!-- Overall Visualizations -->
+        <h3 class="mt-5 text-center text-success">Overall Carbon Footprint Analysis</h3>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h5>Overall Travel Usage</h5>
+                <img src="{{ overall_travel_chart }}" class="img-fluid" alt="Overall Travel Chart">
+            </div>
+            <div class="col-md-6 text-center">
+                <h5>Overall Electricity Usage</h5>
+                <img src="{{ overall_electricity_chart }}" class="img-fluid" alt="Overall Electricity Chart">
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'carbon_footprint' %}" class="btn btn-primary">Calculate Again</a>
+        </div>
+        <div class="text-center mt-4">
+            <a href="" class="btn btn-primary">Get Tailored Recommendations to reduce!!</a>
+        </div>
     </div>
 </body>
 </html>

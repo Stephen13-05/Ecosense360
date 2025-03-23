@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import CarbonFootprintForm
 from .models import CarbonFootprintRecord
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import io
+import base64
 
 # Emission Factors (kg CO₂ per unit)
 ELECTRICITY_EMISSION_FACTOR = 0.92  # kg CO₂ per kWh (India)
@@ -77,7 +82,94 @@ def carbon_footprint(request):
 
     return render(request, "registration/carbon.html", {"form": form})
 
+
+def generate_chart(data, labels, title):
+    """Helper function to generate a chart and return base64 string."""
+    plt.figure(figsize=(5, 3))
+    colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown']
+    plt.bar(labels, data, color=colors[:len(labels)])
+    plt.title(title)
+
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+    chart_data = base64.b64encode(image_png).decode('utf-8')
+    plt.close()
+
+    return f"data:image/png;base64,{chart_data}"
+
 def carbon_result(request):
+    # Fetch records sorted by the latest created_at timestamp
     records = CarbonFootprintRecord.objects.all().order_by('-created_at')
-    latest_record = records.first()
-    return render(request, "registration/carbon_result.html", {"records": records, "total_footprint": latest_record.total_footprint})
+    if records.exists():
+        latest_record = records[0]  # ✅ Get the latest entry
+        latest_footprint = latest_record.total_footprint
+    else:
+        latest_footprint = 0  # Default value if no records exist
+
+    # Group records by created_at
+    records_by_time = {}
+    for record in records:
+        timestamp = record.created_at.strftime('%Y-%m-%d %H:%M:%S')  # 🔄 Updated
+        if timestamp not in records_by_time:
+            records_by_time[timestamp] = []
+        records_by_time[timestamp].append(record)
+
+    # Generate individual charts per timestamp
+    timestamp_charts = {}
+    for timestamp, records_list in records_by_time.items():
+        travel_data = [
+            sum(r.daily_car_km for r in records_list),
+            sum(r.daily_bus_km for r in records_list),
+            sum(r.daily_bike_km for r in records_list)
+        ]
+        travel_labels = ["Car Travel", "Bus Travel", "Bike Travel"]
+        timestamp_charts[timestamp] = {
+            "travel_chart": generate_chart(travel_data, travel_labels, f"Travel Usage ({timestamp})"),
+        }
+
+        electricity_data = [
+            sum(r.num_ac for r in records_list),
+            sum(r.ac_hours for r in records_list),
+            sum(r.num_fridge for r in records_list),
+            sum(r.num_fans for r in records_list),
+            sum(r.fan_hours for r in records_list),
+            sum(r.num_tv for r in records_list),
+            sum(r.tv_hours for r in records_list)
+        ]
+        electricity_labels = ["AC", "AC Hours", "Fridge", "Fans", "Fan Hours", "TV", "TV Hours"]
+        timestamp_charts[timestamp]["electricity_chart"] = generate_chart(electricity_data, electricity_labels, f"Electricity Usage ({timestamp})")
+
+    # Overall Travel Usage
+    travel_data = [
+        sum(r.daily_car_km for r in records),
+        sum(r.daily_bus_km for r in records),
+        sum(r.daily_bike_km for r in records)
+    ]
+    travel_labels = ["Car", "Bus", "Bike"]
+    overall_travel_chart = generate_chart(travel_data, travel_labels, "Overall Travel Usage")
+
+    # Overall Electricity Usage
+    electricity_data = [
+        sum(r.num_ac for r in records),
+        sum(r.ac_hours for r in records),
+        sum(r.num_fridge for r in records),
+        sum(r.num_fans for r in records),
+        sum(r.fan_hours for r in records),
+        sum(r.num_tv for r in records),
+        sum(r.tv_hours for r in records)
+    ]
+    electricity_labels = ["AC", "AC Hours", "Fridge", "Fans", "Fan Hours", "TV", "TV Hours"]
+    overall_electricity_chart = generate_chart(electricity_data, electricity_labels, "Overall Electricity Usage")
+
+    # 🔹 Pass records separately to display them before visualizations
+    return render(request, "registration/carbon_result.html", {
+        "records": records,  # ✅ Send all records to display first
+        "records_by_time": records_by_time,
+        "timestamp_charts": timestamp_charts,
+        "overall_travel_chart": overall_travel_chart,
+        "overall_electricity_chart": overall_electricity_chart,
+        "latest_footprint": latest_footprint
+    })
