@@ -1,37 +1,37 @@
 from django import forms
+from .models import CarbonFootprintRecord
 
-class CarbonFootprintForm(forms.Form):
-    # 🏡 Household & Electricity Usage
-    num_people = forms.IntegerField(label="How many people live in your house?", min_value=1)
-    monthly_kwh = forms.IntegerField(label="How many units (kWh) of electricity do you consume monthly?", min_value=0)
-    
-    # ⚡ Appliance Usage
-    num_ac = forms.IntegerField(label="Number of Air Conditioners", min_value=0)
-    ac_hours = forms.IntegerField(label="Hours AC is used daily", min_value=0, max_value=24)
-    
-    num_fridge = forms.IntegerField(label="Number of Refrigerators", min_value=0)
-    
-    num_fans = forms.IntegerField(label="Number of Fans", min_value=0)
-    fan_hours = forms.IntegerField(label="Hours Fans are used daily", min_value=0, max_value=24)
-    
-    num_tv = forms.IntegerField(label="Number of Televisions", min_value=0)
-    tv_hours = forms.IntegerField(label="Hours TV is used daily", min_value=0, max_value=24)
-
-    # 🚗 Transportation
-    daily_car_km = forms.IntegerField(label="Kilometers traveled by car daily", min_value=0)
-    daily_bus_km = forms.IntegerField(label="Kilometers traveled by bus daily", min_value=0)
-    daily_bike_km = forms.IntegerField(label="Kilometers traveled by bike daily", min_value=0)
-
-    # 🍽️ Diet Choices
-    diet_type = forms.ChoiceField(
-        label="What is your diet type?",
-        choices=[('veg', 'Vegetarian'), ('nonveg', 'Non-Vegetarian'), ('vegan', 'Vegan')],
-        widget=forms.RadioSelect
+class CarbonFootprintForm(forms.ModelForm):
+    transport_mode = forms.MultipleChoiceField(
+        label="Which transport modes do you use?",
+        choices=[('car', 'Car'), ('bike', 'Bike'), ('bus', 'Bus'), ('train', 'Train')],
+        widget=forms.CheckboxSelectMultiple,
+        required=False
     )
-
-    # 🗑️ Waste Management
-    waste_type = forms.ChoiceField(
-        label="How do you dispose of waste?",
-        choices=[('recycle', 'Recycling & Composting'), ('normal', 'Normal Disposal (No Recycling)')],
-        widget=forms.RadioSelect
-    )
+    
+    class Meta:
+        model = CarbonFootprintRecord
+        fields = [
+            'num_people', 'monthly_kwh', 'num_ac', 'ac_hours', 'num_fridge', 'num_fans', 'fan_hours', 'num_tv', 'tv_hours',
+            'daily_car_km', 'daily_bus_km', 'daily_bike_km', 'diet_type', 'waste_type'
+        ]
+        labels = {
+            'num_people': 'Number of People in Household',
+            'monthly_kwh': 'Monthly Electricity Consumption (kWh)',
+            'num_ac': 'Number of Air Conditioners',
+            'ac_hours': 'Daily AC Usage (hours)',
+            'num_fridge': 'Number of Refrigerators',
+            'num_fans': 'Number of Fans',
+            'fan_hours': 'Daily Fan Usage (hours)',
+            'num_tv': 'Number of Televisions',
+            'tv_hours': 'Daily TV Usage (hours)',
+            'daily_car_km': 'Daily Car Travel (km)',
+            'daily_bus_km': 'Daily Bus Travel (km)',
+            'daily_bike_km': 'Daily Bike Travel (km)',
+            'diet_type': 'Diet Type',
+            'waste_type': 'Waste Management Type'
+        }
+        widgets = {
+            'diet_type': forms.Select(choices=[('veg', 'Vegetarian'), ('nonveg', 'Non-Vegetarian')]),
+            'waste_type': forms.Select(choices=[('low', 'Low Waste'), ('high', 'High Waste')]),
+        }
