@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("app_name.urls")),
     path("carbon/",include("Carbon.urls")),
+    path("treat/", include("treat.urls")), 
 
 ]
