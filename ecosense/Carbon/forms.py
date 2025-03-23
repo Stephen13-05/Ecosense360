@@ -13,7 +13,7 @@ class CarbonFootprintForm(forms.ModelForm):
         model = CarbonFootprintRecord
         fields = [
             'num_people', 'monthly_kwh', 'num_ac', 'ac_hours', 'num_fridge', 'num_fans', 'fan_hours', 'num_tv', 'tv_hours',
-            'daily_car_km', 'daily_bus_km', 'daily_bike_km', 'diet_type', 'waste_type'
+            'daily_car_km', 'daily_bus_km', 'daily_bike_km', 'daily_train_km', 'diet_type'
         ]
         labels = {
             'num_people': 'Number of People in Household',
@@ -29,9 +29,7 @@ class CarbonFootprintForm(forms.ModelForm):
             'daily_bus_km': 'Daily Bus Travel (km)',
             'daily_bike_km': 'Daily Bike Travel (km)',
             'diet_type': 'Diet Type',
-            'waste_type': 'Waste Management Type'
         }
         widgets = {
             'diet_type': forms.Select(choices=[('veg', 'Vegetarian'), ('nonveg', 'Non-Vegetarian')]),
-            'waste_type': forms.Select(choices=[('low', 'Low Waste'), ('high', 'High Waste')]),
         }

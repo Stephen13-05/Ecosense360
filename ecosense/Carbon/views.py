@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CarbonFootprintForm
 from .models import CarbonFootprintRecord
 
@@ -15,8 +15,6 @@ DIET_EMISSIONS = {
     'pesc': 170,  # Pescatarian (~2 tons CO₂ per year)
     'nonveg': 250  # Non-Vegetarian (~3 tons CO₂ per year)
 }
-
-WASTE_EMISSIONS = {'recycle': 5, 'normal': 60}  # kg CO₂ per month
 
 # Appliance Power Ratings (Watts)
 APPLIANCE_POWER = {
@@ -51,9 +49,8 @@ def carbon_footprint(request):
                 transport_footprint += form.cleaned_data['daily_train_km'] * 30 * TRAIN_EMISSION_FACTOR
 
             diet_footprint = DIET_EMISSIONS[form.cleaned_data['diet_type']]
-            waste_footprint = WASTE_EMISSIONS[form.cleaned_data['waste_type']]
 
-            total_footprint = electricity_footprint + appliance_footprint + transport_footprint + diet_footprint + waste_footprint
+            total_footprint = electricity_footprint + appliance_footprint + transport_footprint + diet_footprint
 
             # Save data in the database
             CarbonFootprintRecord.objects.create(
@@ -70,7 +67,6 @@ def carbon_footprint(request):
                 daily_bus_km=form.cleaned_data['daily_bus_km'],
                 daily_bike_km=form.cleaned_data['daily_bike_km'],
                 diet_type=form.cleaned_data['diet_type'],
-                waste_type=form.cleaned_data['waste_type'],
                 total_footprint=total_footprint
             )
 

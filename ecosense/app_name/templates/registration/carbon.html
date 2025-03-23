@@ -49,12 +49,12 @@
     <div class="container mt-5">
         <h2 class="text-center">Carbon Footprint Calculator</h2>
         
-        <form method="post" class="p-4 border rounded">
+        <form method="post" action="{% url 'carbon_footprint' %}" class="p-4 border rounded">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-success w-100">Calculate</button>
         </form>
-
+        
         {% if carbon_footprint is not None %}
             <div class="alert mt-3 text-center">
                 <strong>Your Estimated Carbon Footprint:</strong> {{ carbon_footprint|floatformat:2 }} kg CO₂ per month

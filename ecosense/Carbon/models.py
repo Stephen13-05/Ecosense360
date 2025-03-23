@@ -13,8 +13,8 @@ class CarbonFootprintRecord(models.Model):
     daily_car_km = models.IntegerField()
     daily_bus_km = models.IntegerField()
     daily_bike_km = models.IntegerField()
+    daily_train_km = models.FloatField(null=True, blank=True) 
     diet_type = models.CharField(max_length=10)
-    waste_type = models.CharField(max_length=10)
     total_footprint = models.FloatField()
 
     created_at = models.DateTimeField(auto_now_add=True)
